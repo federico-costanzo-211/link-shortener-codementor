@@ -1,9 +1,14 @@
 #header {
     display: flex;
     justify-content: center;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
     display: flex;
     flex-direction: column;
     
@@ -12,6 +17,8 @@ body {
 }
 
 .container {
+    background-color: white;
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,11 +26,11 @@ body {
     min-height: 120px;
     max-height: 30vh; 
     min-width: 50%;
-    max-width: 70%;
+    max-width: 80%;
     
     border-style: solid;
     border-width: 3px;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 #input-form {
@@ -34,7 +41,7 @@ body {
     justify-content: center;
 }
 
-#input-form #unprocessed-link-input {
+#input-form #input {
     width: 30vw;
     min-width: 100%;
 
