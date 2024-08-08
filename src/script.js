@@ -1,15 +1,23 @@
 document.addEventListener("DOMContentLoaded", (event) => {
-    let form = document.querySelector("#input-form");
+    event.preventDefault();
+    
+    const form = document.querySelector("#input-form");
+    const output = document.querySelector("#output");
+    let copybutton = document.querySelector("#copy-link-button");
 
+    copybutton.onclick = async () => {
+        await navigator.clipboard.writeText(`${output.value}`);
+    };
+    
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
-
-        let output = document.querySelector("#output");
         
-        let link = this.input.value; 
-        output.innerText = await shortenLink(link);
+        const link = this.input.value; 
+        output.value = await shortenLink(link);
+
+        copybutton.style.display = "block";
     })
-})
+});
 
 async function shortenLink(link){
     let params = {
@@ -28,6 +36,10 @@ async function shortenLink(link){
         }
     )
     .then((response) => response.json())
-    .then((link) => link.id)
+    .then((link) => {
+        if (link.id !== undefined) {
+            return link.id;
+        } else throw new Error("Link not valid. Try again.");
+    })
     .catch((err) => console.log(err));
 }

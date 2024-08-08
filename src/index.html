@@ -15,13 +15,14 @@
         
         <div class="container" id="input-wrapper">
             <form id="input-form" name="input-form">
-                <input id="input" name="input" type="text" required/>
+                <input id="input" name="input" type="text" required autocomplete="off" />
                 <input id="shorten-button" type="submit" value="Shorten" />
             </form>
         </div>
 
         <div class="container" id="output-wrapper">
-            <p id="output"></p>
+            <input id="output" type="text" readonly autocomplete="off" />
+            <button id="copy-link-button" style="display: none;">Copy shortened link</button>
         </div>
     </body>
 </html>
