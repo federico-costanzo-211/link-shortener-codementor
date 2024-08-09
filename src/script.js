@@ -35,11 +35,12 @@ async function shortenLink(link){
             body: JSON.stringify(params)
         }
     )
-    .then((response) => response.json())
+    .then((response) => {
+        if (response.status === "403") throw new Error("Link not valid. Please try again.");
+        else return response.json()
+    })
     .then((link) => {
-        if (link.id !== undefined) {
-            return link.id;
-        } else throw new Error("Link not valid. Try again.");
+        if (link.id !== undefined) return link.id;
     })
     .catch((err) => console.log(err));
 }
